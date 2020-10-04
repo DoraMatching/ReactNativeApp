@@ -1,0 +1,12 @@
+{
+  "name": "doramatching",
+  "displayName": "doramatching",
+  "expo": {
+    "name": "doramatching",
+    "slug": "doramatching",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
