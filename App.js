@@ -4,11 +4,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import store from "./store";
 import LoginForm from "./screens/Login";
+import RegisterForm from "./screens/Register";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <LoginForm></LoginForm>
+      <RegisterForm></RegisterForm>
     </Provider>
   );
 }

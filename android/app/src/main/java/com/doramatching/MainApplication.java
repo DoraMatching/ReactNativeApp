@@ -7,6 +7,7 @@ import android.net.Uri;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.horcrux.svg.SvgPackage;
+import com.horcrux.svg.SvgPackage;
 import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -45,6 +46,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+
       return packages;
     }
 

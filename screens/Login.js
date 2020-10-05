@@ -9,8 +9,29 @@ import {
 } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import { GitHubSocialButton } from "react-native-social-buttons";
-import * as Svg from "react-native-svg";
-const { Circle, Rect } = Svg;
+import Svg, {
+  Circle,
+  Ellipse,
+  G,
+ 
+  TSpan,
+  TextPath,
+  Path,
+  Polygon,
+  Polyline,
+  Line,
+  Rect,
+  Use,
+  Image,
+  Symbol,
+  Defs,
+  LinearGradient,
+  RadialGradient,
+  Stop,
+  ClipPath,
+  Pattern,
+  Mask,
+} from 'react-native-svg';
 import editTextComponent from "../components/EditTextComponent";
 
 const LoginScreen = (props) => {
@@ -45,6 +66,26 @@ const LoginScreen = (props) => {
       >
         <Text style={styles.buttonText}>Sign in</Text>
       </TouchableOpacity>
+      
+      <View
+      style={{ flexDirection: "row",
+               alignItems: 'center', 
+         justifyContent:'center',
+         marginTop:10,
+         marginBottom:5}}>
+        <Svg width='100' height="2"   >
+          <Line x1="0" y1="0" x2="100" y2="0" stroke="black"  />
+        </Svg>
+        <Text
+        style={{
+          paddingStart: 10,
+          paddingEnd: 10,
+          fontWeight: 'bold'
+        }}>OR</Text>
+        <Svg height="2" width="100" >
+          <Line x1="0" y1="0" x2="100" y2="0" stroke="black"  />
+        </Svg>
+      </View>
       <GitHubSocialButton
         buttonViewStyle={{
           height: 45,
