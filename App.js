@@ -6,10 +6,12 @@ import store from "./store";
 import LoginForm from "./screens/Login";
 import RegisterForm from "./screens/Register";
 
+
+
 export default function App() {
   return (
     <Provider store={store}>
-      <RegisterForm></RegisterForm>
+      <LoginForm></LoginForm>
     </Provider>
   );
 }

@@ -33,7 +33,7 @@ import Svg, {
 } from "react-native-svg";
 import editTextComponent from "../components/EditTextComponent";
 
-const LoginScreen = (props) => {
+export const LoginScreen = (props) => {
   const { handleSubmit } = props;
   return (
     <View style={styles.authorizeLayout}>
@@ -62,6 +62,7 @@ const LoginScreen = (props) => {
           borderRadius: 5,
           marginTop: 30,
         }}
+        onPress= {() => {console.log(props);props.onSubmitForm();}}
       >
         <Text style={styles.buttonText}>Sign in</Text>
       </TouchableOpacity>
@@ -110,6 +111,7 @@ const LoginScreen = (props) => {
       >
         <Text>Don't have an account ? </Text>
         <Text>Sign up here</Text>
+        <Text>  User {props.userTest} </Text>
       </View>
     </View>
   );
@@ -140,7 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginForm = reduxForm({
-  form: "login",
-})(LoginScreen);
-export default LoginForm;
+
