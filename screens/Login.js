@@ -13,7 +13,6 @@ import Svg, {
   Circle,
   Ellipse,
   G,
- 
   TSpan,
   TextPath,
   Path,
@@ -31,7 +30,7 @@ import Svg, {
   ClipPath,
   Pattern,
   Mask,
-} from 'react-native-svg';
+} from "react-native-svg";
 import editTextComponent from "../components/EditTextComponent";
 
 const LoginScreen = (props) => {
@@ -66,24 +65,30 @@ const LoginScreen = (props) => {
       >
         <Text style={styles.buttonText}>Sign in</Text>
       </TouchableOpacity>
-      
+
       <View
-      style={{ flexDirection: "row",
-               alignItems: 'center', 
-         justifyContent:'center',
-         marginTop:10,
-         marginBottom:5}}>
-        <Svg width='100' height="2"   >
-          <Line x1="0" y1="0" x2="100" y2="0" stroke="black"  />
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: 10,
+          marginBottom: 5,
+        }}
+      >
+        <Svg width="100" height="2">
+          <Line x1="0" y1="0" x2="100" y2="0" stroke="black" />
         </Svg>
         <Text
-        style={{
-          paddingStart: 10,
-          paddingEnd: 10,
-          fontWeight: 'bold'
-        }}>OR</Text>
-        <Svg height="2" width="100" >
-          <Line x1="0" y1="0" x2="100" y2="0" stroke="black"  />
+          style={{
+            paddingStart: 10,
+            paddingEnd: 10,
+            fontWeight: "bold",
+          }}
+        >
+          OR
+        </Text>
+        <Svg height="2" width="100">
+          <Line x1="0" y1="0" x2="100" y2="0" stroke="black" />
         </Svg>
       </View>
       <GitHubSocialButton
