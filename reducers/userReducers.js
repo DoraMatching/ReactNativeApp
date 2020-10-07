@@ -15,13 +15,13 @@ const userReducers = (users = [], action) => {
     case LOGIN_SUCCEEDED:
     case LOGIN_WITH_GITHUB_SUCCEEDED:
       console.log("Login_succeeded in reducers", action.response);
-      return action.response;
+      return {success: true, message : action.response};
     case LOGIN_FAILED:
     case LOGIN_WITH_GITHUB_FAILED:
       console.log("Login_failed in reducers", action.error);
-      return action.error;
+      return {success: false, message : action.error};
     default:
-      return "";
+      return {success: false, message : null};
   }
 };
 export default userReducers;

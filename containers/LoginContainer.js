@@ -8,10 +8,10 @@ import { Field, reduxForm } from "redux-form";
 const mapDispatchToProps = (dispatch) => {
   console.log("dispatch", dispatch);
   return {
-    onSubmitForm: () => {
+    onSubmitForm: ({username, email, password}) => {
       console.log("onSubmitForm is called");
       dispatch(
-        loginUserAction({ username: "raymond", password: "raymond123#" })
+        loginUserAction({username, email, password})
       );
     },
     onSubmitGithubForm: () => {
@@ -22,9 +22,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   //console.log("map state To Prop", "OK");
-  console.log("map state To Prop", state);
+  //console.log("map state To Prop", state);
   return {
-    userTest: state.userReducers ? state.userReducers.name : "",
+    user: state.userReducers ,
   };
 };
 

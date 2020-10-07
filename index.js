@@ -21,8 +21,9 @@ const sagaMiddleware = createSagaMiddleware();
 console.log("sagaMiddleware", sagaMiddleware);
 
 const rootReducer = combineReducers({
-  formReducer,
+  
   userReducers,
+  form:formReducer,
 });
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component , useState, useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import {
   StyleSheet,
@@ -10,47 +10,59 @@ import {
 import CheckBox from "@react-native-community/checkbox";
 import { GitHubSocialButton } from "react-native-social-buttons";
 import Svg, {
-  Circle,
-  Ellipse,
-  G,
-  TSpan,
-  TextPath,
-  Path,
-  Polygon,
-  Polyline,
+  
   Line,
-  Rect,
-  Use,
-  Image,
-  Symbol,
-  Defs,
-  LinearGradient,
-  RadialGradient,
-  Stop,
-  ClipPath,
-  Pattern,
-  Mask,
+  
 } from "react-native-svg";
 import editTextComponent from "../components/EditTextComponent";
 
+
+
+
 export const LoginScreen = (props) => {
+  const [toggleCheckBox, setToggleCheckBox] = useState(false)
+  const submit = values => {
+    const {usernameOrEmail, password} = values;
+    /*console.log("Usernameoremail", usernameOrEmail);
+    console.log("Password", password);
+    console.log("submit", values);*/
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(usernameOrEmail)){
+      props.onSubmitForm({ username: null, email: usernameOrEmail, password: password, toggleCheckBox });
+    }
+    else {
+      props.onSubmitForm({ username: usernameOrEmail, email: null, password: password, toggleCheckBox });
+    }
+    
+  }
   const { handleSubmit } = props;
+  
   return (
     <View style={styles.authorizeLayout}>
       <Text style={styles.signInText}>Sign in</Text>
       <Field
-        placeholder="Username or Email"
+      name={'usernameOrEmail'}
+      props={{
+        placeholder: "Username or Email"
+      }}
+        
         component={editTextComponent}
-        name="Username or email"
+        
       />
       <Field
-        placeholder="Password"
+        name={'password'}
+        props={{
+          placeholder: 'Password',
+          secureTextEntry: true
+        }}
         component={editTextComponent}
-        name="Password"
+        
       />
       <Text style={styles.forgotPasswordText}>Forgot password ?</Text>
       <View style={{ flexDirection: "row" }}>
-        <CheckBox></CheckBox>
+        <CheckBox
+         disabled={false}
+         value={toggleCheckBox}
+         onValueChange={(newValue) => setToggleCheckBox(newValue)}/>
         <Text style={{ textAlignVertical: "center" }}>Remember me</Text>
       </View>
       <TouchableOpacity
@@ -62,10 +74,8 @@ export const LoginScreen = (props) => {
           borderRadius: 5,
           marginTop: 30,
         }}
-        onPress={() => {
-          console.log("props login", props);
-          props.onSubmitForm();
-        }}
+        
+        onPress={handleSubmit(submit)}
       >
         <Text style={styles.buttonText}>Sign in</Text>
       </TouchableOpacity>
@@ -102,6 +112,7 @@ export const LoginScreen = (props) => {
           width: "100%",
           borderRadius: 5,
         }}
+        onPress = {() => {props.onSubmitGithubForm();}}
       ></GitHubSocialButton>
       <View
         style={{
@@ -114,7 +125,6 @@ export const LoginScreen = (props) => {
       >
         <Text>Don't have an account ? </Text>
         <Text>Sign up here</Text>
-        <Text> User </Text>
       </View>
     </View>
   );

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { StyleSheet, View, TextInput, Text } from "react-native";
 
-const editTextComponent = ({ placeholder, name }) => {
+const editTextComponent = ({ input: { onChange, ...input }, ...rest}) => {
   return (
     <View>
       <TextInput
         style={styles.roundedField}
-        placeholder={placeholder}
+        onChangeText={onChange} {...input} {...rest}
       ></TextInput>
     </View>
   );
