@@ -1,4 +1,4 @@
-import React, { Component , useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Field, reduxForm } from "redux-form";
 import {
   StyleSheet,
@@ -9,60 +9,61 @@ import {
 } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import { GitHubSocialButton } from "react-native-social-buttons";
-import Svg, {
-  
-  Line,
-  
-} from "react-native-svg";
+import Svg, { Line } from "react-native-svg";
 import editTextComponent from "../components/EditTextComponent";
 
-
-
-
 export const LoginScreen = (props) => {
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
-  const submit = values => {
-    const {usernameOrEmail, password} = values;
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const submit = (values) => {
+    const { usernameOrEmail, password } = values;
     /*console.log("Usernameoremail", usernameOrEmail);
     console.log("Password", password);
     console.log("submit", values);*/
-    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(usernameOrEmail)){
-      props.onSubmitForm({ username: null, email: usernameOrEmail, password: password, toggleCheckBox });
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(usernameOrEmail)) {
+      props.onSubmitForm({
+        username: null,
+        email: usernameOrEmail,
+        password: password,
+        toggleCheckBox: toggleCheckBox,
+      });
+    } else {
+      props.onSubmitForm({
+        username: usernameOrEmail,
+        email: null,
+        password: password,
+        toggleCheckBox: toggleCheckBox,
+      });
     }
-    else {
-      props.onSubmitForm({ username: usernameOrEmail, email: null, password: password, toggleCheckBox });
-    }
-    
-  }
+  };
   const { handleSubmit } = props;
-  
+  if (props.user.success === true) {
+    alert("Sign in successfully");
+  } else if (props.user.success === false) alert(props.user.message);
   return (
     <View style={styles.authorizeLayout}>
       <Text style={styles.signInText}>Sign in</Text>
       <Field
-      name={'usernameOrEmail'}
-      props={{
-        placeholder: "Username or Email"
-      }}
-        
-        component={editTextComponent}
-        
-      />
-      <Field
-        name={'password'}
+        name={"usernameOrEmail"}
         props={{
-          placeholder: 'Password',
-          secureTextEntry: true
+          placeholder: "Username or Email",
         }}
         component={editTextComponent}
-        
+      />
+      <Field
+        name={"password"}
+        props={{
+          placeholder: "Password",
+          secureTextEntry: true,
+        }}
+        component={editTextComponent}
       />
       <Text style={styles.forgotPasswordText}>Forgot password ?</Text>
       <View style={{ flexDirection: "row" }}>
         <CheckBox
-         disabled={false}
-         value={toggleCheckBox}
-         onValueChange={(newValue) => setToggleCheckBox(newValue)}/>
+          disabled={false}
+          value={toggleCheckBox}
+          onValueChange={(newValue) => setToggleCheckBox(newValue)}
+        />
         <Text style={{ textAlignVertical: "center" }}>Remember me</Text>
       </View>
       <TouchableOpacity
@@ -74,7 +75,6 @@ export const LoginScreen = (props) => {
           borderRadius: 5,
           marginTop: 30,
         }}
-        
         onPress={handleSubmit(submit)}
       >
         <Text style={styles.buttonText}>Sign in</Text>
@@ -112,7 +112,9 @@ export const LoginScreen = (props) => {
           width: "100%",
           borderRadius: 5,
         }}
-        onPress = {() => {props.onSubmitGithubForm();}}
+        onPress={() => {
+          props.onSubmitGithubForm();
+        }}
       ></GitHubSocialButton>
       <View
         style={{
