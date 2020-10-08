@@ -19,7 +19,7 @@ import {
 import { call, put, takeLatest } from "redux-saga/effects";
 import { Api } from "./user.api";
 import { storage } from "./asyncStorage";
-import getGithubTokenAsync from "./getGithubTokenAsync";
+//import getGithubTokenAsync from "./getGithubTokenAsync";
 
 export function* login(action) {
   try {
@@ -45,18 +45,18 @@ export function* watchLogin() {
   yield takeLatest(LOGIN_USER, login);
 }
 
-export function* loginWithGitHub() {
-  try {
-    console.log("in saga login with Github", "OK");
-    const accessToken = yield getGithubTokenAsync();
-    const response = yield Api.loginWithGitHubFromAPI(accessToken);
-    yield put({ type: LOGIN_WITH_GITHUB_SUCCEEDED, response: response });
-  } catch (error) {
-    console.log("in catch saga with Github", "NOT OK");
-    yield put({ type: LOGIN_WITH_GITHUB_FAILED, error: error });
-  }
-}
+// export function* loginWithGitHub() {
+//   try {
+//     console.log("in saga login with Github", "OK");
+//     const accessToken = yield getGithubTokenAsync();
+//     const response = yield Api.loginWithGitHubFromAPI(accessToken);
+//     yield put({ type: LOGIN_WITH_GITHUB_SUCCEEDED, response: response });
+//   } catch (error) {
+//     console.log("in catch saga with Github", "NOT OK");
+//     yield put({ type: LOGIN_WITH_GITHUB_FAILED, error: error });
+//   }
+// }
 
-export function* watchLoginWithGithub() {
-  yield takeLatest(LOGIN_WITH_GITHUB, loginWithGitHub);
-}
+// export function* watchLoginWithGithub() {
+//   yield takeLatest(LOGIN_WITH_GITHUB, loginWithGitHub);
+// }
