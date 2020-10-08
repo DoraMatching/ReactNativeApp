@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const urlLoginUser = "https://api.dev.doramatching.tk/login";
-const urlLoginWithGithubUser = "https://api.dev.doramatching.tk/login";
+const urlLoginWithGithubUser = "https://api.dev.doramatching.tk/github";
 
 function* loginFromApi(user) {
   const { username, email, password } = user;

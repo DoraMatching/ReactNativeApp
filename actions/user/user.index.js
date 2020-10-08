@@ -19,7 +19,7 @@ export const registerUserAction = (user) => {
 };
 
 export const loginUserAction = (user) => {
-  console.log("Login action", user);
+  // console.log("Login action", user);
   return {
     type: LOGIN_USER,
     user,
@@ -27,7 +27,7 @@ export const loginUserAction = (user) => {
 };
 
 export const loginUserWithGitHubAction = () => {
-  console.log("Login with GitHub action");
+  // console.log("Login with GitHub action");
   return {
     type: LOGIN_WITH_GITHUB,
   };

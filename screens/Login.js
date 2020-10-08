@@ -34,6 +34,7 @@ export const LoginScreen = (props) => {
         toggleCheckBox: toggleCheckBox,
       });
     }
+    setToggleCheckBox(false);
   };
   const { handleSubmit } = props;
   if (props.user.success === true) {

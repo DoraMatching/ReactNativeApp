@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
   console.log("dispatch", dispatch);
   return {
     onSubmitForm: ({ username, email, password, toggleCheckBox }) => {
-      console.log("onSubmitForm is called");
+      // console.log("onSubmitForm is called");
       dispatch(loginUserAction({ username, email, password, toggleCheckBox }));
     },
     onSubmitGithubForm: () => {
