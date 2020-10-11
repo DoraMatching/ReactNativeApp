@@ -5,13 +5,14 @@ import { Provider } from "react-redux";
 
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { reducer as formReducer } from "redux-form";
+
 import userReducers from "./reducers/userReducers";
-import testReducers from "./reducers/testReducers";
-import LoginForm from "./containers/LoginContainer";
+//import LoginForm from "./containers/LoginContainer";
+
+import MyRouters from "./routers/router";
 //Redux saga
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
-import { watchLogin } from "./sagas/user/user.sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 console.log("sagaMiddleware", sagaMiddleware);
@@ -27,7 +28,7 @@ sagaMiddleware.run(rootSaga);
 const App = () => {
   return (
     <Provider store={store}>
-      <LoginForm></LoginForm>
+      <MyRouters></MyRouters>
     </Provider>
   );
 };

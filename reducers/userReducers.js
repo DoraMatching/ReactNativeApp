@@ -14,10 +14,12 @@ const userReducers = (users = [], action) => {
   switch (action.type) {
     case LOGIN_SUCCEEDED:
     case LOGIN_WITH_GITHUB_SUCCEEDED:
+    case REGISTER_SUCCEEDED:
       console.log("Login_succeeded in reducers", action.response);
       return { success: true, message: action.response };
     case LOGIN_FAILED:
     case LOGIN_WITH_GITHUB_FAILED:
+    case REGISTER_FAILED:
       console.log("Login_failed in reducers", action.error);
       return { success: false, message: action.error };
     default:

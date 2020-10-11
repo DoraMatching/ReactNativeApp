@@ -19,19 +19,19 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  //console.log("map state To Prop", "OK");
-  //console.log("map state To Prop", state);
+  console.log("in map state To Prop", "YES");
   return {
     user: state.userReducers,
   };
 };
 
-const LoginContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginScreen);
-
 const LoginForm = reduxForm({
   form: "login",
-})(LoginContainer);
+})(LoginScreen);
+
+export const LoginContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);
+
 export default LoginForm;

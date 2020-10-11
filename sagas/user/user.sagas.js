@@ -1,9 +1,4 @@
 import {
-  loginSucessAction,
-  loginFailedAction,
-} from "../../actions/user/user.index";
-
-import {
   REGISTER_USER,
   REGISTER_SUCCEEDED,
   REGISTER_FAILED,
@@ -47,10 +42,10 @@ export function* watchLogin() {
 
 export function* loginWithGitHub() {
   try {
-    //console.log("in saga login with Github", "OK");
+    console.log("in saga login with Github", "OK");
     const { accessToken, ...datas } = yield getGithubTokenAsync();
-    // console.log('DATAS', datas);
-    // console.log("in saga login with Github", accessToken);
+    console.log("DATAS", datas);
+    console.log("in saga login with Github", accessToken);
     const response = yield Api.loginWithGitHubFromAPI(accessToken);
     yield put({ type: LOGIN_WITH_GITHUB_SUCCEEDED, response: response });
   } catch (error) {
@@ -61,4 +56,17 @@ export function* loginWithGitHub() {
 
 export function* watchLoginWithGithub() {
   yield takeLatest(LOGIN_WITH_GITHUB, loginWithGitHub);
+}
+
+function* register(action) {
+  try {
+    const response = yield Api.registerFromAPI(action.user);
+    yield put({ type: REGISTER_SUCCEEDED, response: response });
+  } catch (error) {
+    yield put({ type: REGISTER_FAILED, error: "Try again !" });
+  }
+}
+
+export function* watchRegister() {
+  yield takeLatest(REGISTER_USER, register);
 }

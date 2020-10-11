@@ -18,6 +18,20 @@ export const registerUserAction = (user) => {
   };
 };
 
+export const registerSucessAction = (response) => {
+  return {
+    type: REGISTER_SUCCEEDED,
+    response,
+  };
+};
+
+export const registerFailedAction = (error) => {
+  return {
+    type: REGISTER_FAILED,
+    error,
+  };
+};
+
 export const loginUserAction = (user) => {
   // console.log("Login action", user);
   return {
