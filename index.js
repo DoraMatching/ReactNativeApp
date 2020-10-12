@@ -14,6 +14,9 @@ import MyRouters from "./routers/router";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
 
+import  TagItemComponent  from "./components/TagItemComponent";
+//import QuestionItemComponent from './components/QuestionItemComponent';
+
 const sagaMiddleware = createSagaMiddleware();
 console.log("sagaMiddleware", sagaMiddleware);
 

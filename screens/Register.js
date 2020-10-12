@@ -23,8 +23,8 @@ const RegisterScreen = ({handleSubmit, onSubmit, user, navigation}) => {
   const submit = values => {
       console.log("register", values);
       const {username, email, phoneNumber, password} = values;
-      username = username.toLowerCase();
-      onSubmit({username, email, password});
+      const newUsername = username.toLowerCase();
+      onSubmit({username : newUsername, email, password});
   };
   if (user.success === true){
       navigation.navigate("Home");
