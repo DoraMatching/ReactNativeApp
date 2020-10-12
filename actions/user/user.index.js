@@ -18,8 +18,22 @@ export const registerUserAction = (user) => {
   };
 };
 
+export const registerSucessAction = (response) => {
+  return {
+    type: REGISTER_SUCCEEDED,
+    response,
+  };
+};
+
+export const registerFailedAction = (error) => {
+  return {
+    type: REGISTER_FAILED,
+    error,
+  };
+};
+
 export const loginUserAction = (user) => {
-  console.log("Login action", user);
+  // console.log("Login action", user);
   return {
     type: LOGIN_USER,
     user,
@@ -27,7 +41,7 @@ export const loginUserAction = (user) => {
 };
 
 export const loginUserWithGitHubAction = () => {
-  console.log("Login with GitHub action");
+  // console.log("Login with GitHub action");
   return {
     type: LOGIN_WITH_GITHUB,
   };

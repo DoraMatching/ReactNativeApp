@@ -14,25 +14,44 @@ const RegisterScreen = (props) => {
     <View style={styles.authorizeLayout}>
       <Text style={styles.signUpText}>Sign up</Text>
       <Field
-        placeholder="Username"
+        name={"Username"}
+        props={{
+          placeholder: "Username",
+        }}
         component={editTextComponent}
-        name="Username"
       />
-      <Field placeholder="Email" component={editTextComponent} name="Email" />
       <Field
-        placeholder="Phone number"
+        name={"Email"}
+        props={{
+          placeholder: "Email",
+          keyboardType: "email-address",
+        }}
+        component={editTextComponent}
+      />
+      <Field
+        name={"Phone number"}
+        props={{
+          placeholder: "Phone number",
+          keyboardType: "phone-pad",
+        }}
         component={editTextComponent}
         name="Phone number"
       />
       <Field
-        placeholder="Password"
+        name={"password"}
+        props={{
+          placeholder: "Password",
+          secureTextEntry: true,
+        }}
         component={editTextComponent}
-        name="Password"
       />
       <Field
-        placeholder="Confirm password"
+        name={"confirmPassword"}
+        props={{
+          placeholder: "Confirm password",
+          secureTextEntry: true,
+        }}
         component={editTextComponent}
-        name="Confirm password"
       />
       <TouchableOpacity
         style={{
@@ -71,7 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const RegisterForm = reduxForm({
-  form: "register",
-})(RegisterScreen);
-export default RegisterForm;
+export default RegisterScreen;
