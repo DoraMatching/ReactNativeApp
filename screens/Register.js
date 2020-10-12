@@ -9,27 +9,48 @@ import {
 } from "react-native";
 import editTextComponent from "../components/EditTextComponent";
 
-const RegisterScreen = (props) => {
+//Validation
+const required = value => {
+  console.log("validate username", value);
+  return value ? undefined : 'The field is required';
+}
+const isValidEmail = value =>
+    value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : undefined;
+
+
+
+const RegisterScreen = ({handleSubmit, onSubmit, user, navigation}) => {
+  const submit = values => {
+      console.log("register", values);
+      const {username, email, phoneNumber, password} = values;
+      username = username.toLowerCase();
+      onSubmit({username, email, password});
+  };
+  if (user.success === true){
+      navigation.navigate("Home");
+  }
   return (
     <View style={styles.authorizeLayout}>
       <Text style={styles.signUpText}>Sign up</Text>
       <Field
-        name={"Username"}
+        name={"username"}
         props={{
           placeholder: "Username",
         }}
         component={editTextComponent}
+        validate = {required}
       />
       <Field
-        name={"Email"}
+        name={"email"}
         props={{
           placeholder: "Email",
           keyboardType: "email-address",
         }}
         component={editTextComponent}
+        validate = {isValidEmail}
       />
       <Field
-        name={"Phone number"}
+        name={"phoneNumber"}
         props={{
           placeholder: "Phone number",
           keyboardType: "phone-pad",
@@ -44,6 +65,7 @@ const RegisterScreen = (props) => {
           secureTextEntry: true,
         }}
         component={editTextComponent}
+        validate = {required}
       />
       <Field
         name={"confirmPassword"}
@@ -62,9 +84,11 @@ const RegisterScreen = (props) => {
           borderRadius: 5,
           marginTop: 30,
         }}
+        onPress={handleSubmit(submit)}
       >
         <Text style={styles.buttonText}>Sign up</Text>
       </TouchableOpacity>
+      
     </View>
   );
 };
