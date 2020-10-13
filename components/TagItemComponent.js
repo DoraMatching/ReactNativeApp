@@ -13,7 +13,7 @@ export default class TagItemComponent extends Component {
     return (
         <View style={styles.background}>
             <View style={styles.container}>
-                <Text style={styles.tagText}> TensorflowSharp </Text>
+                <Text style={styles.tagText}> {this.props.item.name} </Text>
             </View>
         </View>
     );
@@ -24,13 +24,14 @@ export default class TagItemComponent extends Component {
 
 const styles = StyleSheet.create({
     container : {
-        padding: 5,
-        
+        padding: 3,
+        marginEnd: 5,
         backgroundColor: "#ededed",
         borderRadius: 5,
     },
     tagText: {
         color: '#999999',
+        fontSize: 10,
     },
     background : {
         flex: 1,

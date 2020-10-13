@@ -14,8 +14,10 @@ import MyRouters from "./routers/router";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
 
-//import  TagItemComponent  from "./components/TagItemComponent";
-import QuestionItemComponent from "./components/QuestionItemComponent";
+import  TagItemComponent  from "./components/TagItemComponent";
+import QuestionItemComponent from './components/QuestionItemComponent';
+import TrainerItemComponent from './components/TrainerItemComponent';
+import ClassItemComponent from './components/ClassItemComponent';
 
 const sagaMiddleware = createSagaMiddleware();
 console.log("sagaMiddleware", sagaMiddleware);
@@ -39,4 +41,4 @@ const App = () => {
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,
 // the environment is set up appropriately
-registerRootComponent(QuestionItemComponent);
+registerRootComponent(ClassItemComponent);
