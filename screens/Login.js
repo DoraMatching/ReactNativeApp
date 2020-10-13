@@ -14,6 +14,7 @@ import editTextComponent from "../components/EditTextComponent";
 
 export const LoginScreen = (props) => {
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const { navigation } = props;
   const submit = (values) => {
     const { usernameOrEmail, password } = values;
     /*console.log("Usernameoremail", usernameOrEmail);
@@ -37,7 +38,8 @@ export const LoginScreen = (props) => {
   };
   const { handleSubmit } = props;
   if (props.user.success === true) {
-    alert("Sign in successfully");
+    navigation.navigate("Home");
+    // alert("Sign in successfully");
   } else if (props.user.success === false) alert(props.user.message);
   return (
     <View style={styles.authorizeLayout}>
@@ -126,7 +128,12 @@ export const LoginScreen = (props) => {
         }}
       >
         <Text>Don't have an account ? </Text>
-        <Text>Sign up here</Text>
+        <Text
+          style={styles.signUpText}
+          onPress={() => navigation.navigate("Register")}
+        >
+          Sign up here
+        </Text>
       </View>
     </View>
   );
@@ -154,5 +161,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     color: "white",
+  },
+  signUpText: {
+    color: "blueviolet",
   },
 });

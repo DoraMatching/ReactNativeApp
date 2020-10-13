@@ -21,6 +21,10 @@ target 'doramatching' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
+  pod 'react-native-app-auth', :path => '../node_modules/react-native-app-auth'
+
+  pod 'RNCMaskedView', :path => '../node_modules/@react-native-community/masked-view'
+
   post_install do |installer|
     flipper_post_install(installer)
   end

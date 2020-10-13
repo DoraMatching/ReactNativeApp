@@ -1,8 +1,16 @@
 //Saga effects
 import { call, fork, all } from "redux-saga/effects";
-import { watchLogin, watchLoginWithGithub } from "./user/user.sagas";
+import {
+  watchLogin,
+  watchLoginWithGithub,
+  watchRegister,
+} from "./user/user.sagas";
 
 export default function* rootSaga() {
   console.log("rootSaga", "ok");
-  yield all([watchLogin(), watchLoginWithGithub()]);
+  yield all([
+    fork(watchLogin),
+    fork(watchLoginWithGithub),
+    fork(watchRegister),
+  ]);
 }
