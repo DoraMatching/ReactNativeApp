@@ -11,11 +11,11 @@ export default class TagItemComponent extends Component {
 
   render() {
     return (
-        <View style={styles.background}>
+        // <View style={styles.background}>
             <View style={styles.container}>
                 <Text style={styles.tagText}> {this.props.item.name} </Text>
             </View>
-        </View>
+        // </View>
     );
   }
 
@@ -26,16 +26,22 @@ const styles = StyleSheet.create({
     container : {
         padding: 3,
         marginEnd: 5,
+        marginTop: 3,
         backgroundColor: "#ededed",
         borderRadius: 5,
+        
     },
     tagText: {
-        color: '#999999',
+        color: 'black',
         fontSize: 10,
+        
     },
     background : {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        height : 18,
+        borderColor: 'black',
+        borderWidth: 2,
     }
 });

@@ -26,26 +26,22 @@ export default class QuestionItemComponent extends Component {
                   style={{width: 34, height: 30}}
                   source={require('../images/postIcon.png')}
                 />
-                <View style={{...styles.verticalLayout, paddingStart: 10,}}>
+                <View style={{...styles.verticalLayout, paddingStart: 10, paddingEnd: 10,}}>
                     <Text style={{...styles.title}}>
                     UI Components và bước đầu hướng đến Micro View Controllers trong lập trình iOS 
                     </Text>
                     <Text style={{...styles.time}}>
                         2 minutes ago
                     </Text>
-                    <FlatList
-                       
-                        horizontal={true}
-                        data={tagData}
-                        renderItem={({ item, index }) => {
-                            return (
-                                <TagItemComponent item={item} index={index} parentFlatList={this}>
+                    <View style={{...styles.horizontalLayout,  marginBottom: 0, flexWrap: "wrap"}}>
+                        {tagData.map(item => {
+                                    return (
+                                        <TagItemComponent item={item} >
 
-                                </TagItemComponent>);
-                        }}
-                        keyExtractor={(item, index) => item.id}
-                    >
-                    </FlatList>
+                                                        </TagItemComponent>
+                                    );
+                                })}
+                    </View>
                 </View>
           </View>
           <Image
@@ -75,7 +71,7 @@ export default class QuestionItemComponent extends Component {
                 style={{width: 20, height: 20, marginEnd: 5,}}
                 source={require('../images/commentIcon.png')}
               />
-              <Text style={{fontSize: 13,}}>25 comments</Text>
+              <Text style={{fontSize: 13, alignSelf: 'flex-end',textAlign:'right'}}>25 comments</Text>
             </View>
         </View>
       </View>

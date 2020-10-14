@@ -1,6 +1,6 @@
 import { registerRootComponent } from "expo";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+
 import { Provider } from "react-redux";
 
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -13,11 +13,11 @@ import MyRouters from "./routers/router";
 //Redux saga
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
-
 import  TagItemComponent  from "./components/TagItemComponent";
 import QuestionItemComponent from './components/QuestionItemComponent';
 import TrainerItemComponent from './components/TrainerItemComponent';
 import ClassItemComponent from './components/ClassItemComponent';
+
 
 const sagaMiddleware = createSagaMiddleware();
 console.log("sagaMiddleware", sagaMiddleware);
