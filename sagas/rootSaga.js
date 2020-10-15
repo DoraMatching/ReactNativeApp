@@ -5,6 +5,7 @@ import {
   watchLoginWithGithub,
   watchRegister,
 } from "./user/user.sagas";
+import { watchFetchBlogs } from "./blog/blog.saga";
 
 export default function* rootSaga() {
   console.log("rootSaga", "ok");
@@ -12,5 +13,6 @@ export default function* rootSaga() {
     fork(watchLogin),
     fork(watchLoginWithGithub),
     fork(watchRegister),
+    fork(watchFetchBlogs),
   ]);
 }
