@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, Dimensions, FlatList, TouchableOpacity }
 import { tagData } from "../data/tagData";
 import TagItemComponent from './TagItemComponent';
 import Svg, { Line } from "react-native-svg";
+import TimeAgo from 'react-native-timeago';
 
 import unlikedIcon from '../images/unlikedIcon.png';
 import likedIcon from '../images/likedIcon.png';
@@ -31,9 +32,10 @@ export default class BlogItemComponent extends Component {
                     <Text style={{...styles.title}}>
                         {this.props.title}
                     </Text>
-                    <Text style={{...styles.time}}>
+                    <TimeAgo time={this.props.updatedAt} style={{...styles.time}}/>
+                    {/* <Text style={{...styles.time}}>
                         {this.props.updatedAt}
-                    </Text>
+                    </Text> */}
                     <View style={{...styles.horizontalLayout,  marginBottom: 0, flexWrap: "wrap"}}>
                         {this.props.tags.map(item => {
                                     return (
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
         
     },
     time: {
-        fontSize: 10,
+        fontSize: 11,
         fontWeight: "300",
         paddingEnd: 5,
         marginBottom: 5,

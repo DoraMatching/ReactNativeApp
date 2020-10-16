@@ -36,7 +36,7 @@ export default class Home extends Component {
         value={search}
       />
       <FlatList
-
+        style={{backgroundColor : "#C4C4C4", marginBottom: 80,}}
         data={this.props.blogs.items}
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => <BlogItemComponent {...item} />}
